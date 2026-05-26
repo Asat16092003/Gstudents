@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Grade Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        
+        <aside class="sidebar">
+            <div class="logo-area">
+                <div>
+                    <h2>Academic Portal</h2>
+                    <p>Grade & Performance Analytics</p>
+                </div>
+            </div>
+            
+            <div class="user-profile">
+                <h3>Welcome!</h3>
+            </div>
+            
+            <nav class="navigation">
+                <a href="#" class="nav-item active">Grade Calculator</a>
+                <a href="#" class="nav-item">Dashboard</a>
+                <a href="#" class="nav-item">Subjects</a>
+                <a href="#" class="nav-item">Reports</a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <button class="export-btn" id="exportBtn">Export Report</button>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            
+            <section class="metrics-grid">
+                <div class="metric-card">
+                    <h3>Average Percentage</h3>
+                    <p class="amount" id="avg-percentage">0.0%</p>
+                    <span class="subtext" id="total-marks-text">0 / 0 total marks</span>
+                </div>
+                <div class="metric-card">
+                    <h3>Final Grade</h3>
+                    <p class="amount grade-text" id="final-grade">-</p>
+                    <span class="subtext">Based on GPA scale</span>
+                </div>
+                <div class="metric-card">
+                    <h3>Academic Status</h3>
+                    <p class="amount status-text" id="academic-status">-</p>
+                    <span class="subtext">Passing threshold: 50%</span>
+                </div>
+            </section>
+
+            <section class="charts-and-form-grid">
+                
+                <div class="content-card form-card">
+                    <h3>Add Subject Marks</h3>
+                    <form id="grade-form">
+                        <div class="form-group">
+                            <label for="subject-name">Subject Name</label>
+                            <input type="text" id="subject-name" placeholder="e.g. Mathematics" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="obtained-marks">Obtained Marks</label>
+                            <input type="number" id="obtained-marks" placeholder="e.g. 85" min="0" step="0.1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="total-marks">Total Marks</label>
+                            <input type="number" id="total-marks" placeholder="e.g. 100" min="1" step="0.1" required>
+                        </div>
+                        <button type="submit" class="submit-btn">Calculate & Add</button>
+                    </form>
+                    <div id="alert-box" class="alert-message" style="display: none;"></div>
+                </div>
+
+                <div class="content-card">
+                    <h3>Subject Performance Overview</h3>
+                    <div class="chart-wrapper">
+                        <canvas id="performanceChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="content-card table-card">
+                    <h3>Recorded Grades</h3>
+                    <div class="table-wrapper">
+                        <table class="grades-table">
+                            <thead>
+                                <tr>
+                                    <th>Subject</th>
+                                    <th>Obtained</th>
+                                    <th>Total</th>
+                                    <th>Percentage</th>
+                                    <th>Grade</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="subjects-list">
+                                </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
